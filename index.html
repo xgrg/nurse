@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to Nurse’s documentation! &mdash; Nurse v0.1 documentation</title>
+    <title>Welcome to The Nurse Project’s documentation! &mdash; The Nurse Project v0.1 documentation</title>
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="Nurse v0.1 documentation" href="" /> 
+    <link rel="top" title="The Nurse Project v0.1 documentation" href="" /> 
   </head>
   <body>
     <div class="related">
@@ -28,7 +28,10 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="">Nurse v0.1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li><a href="">The Nurse Project v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -37,8 +40,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-nurse-s-documentation">
-<h1>Welcome to Nurse&#8217;s documentation!<a class="headerlink" href="#welcome-to-nurse-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="welcome-to-the-nurse-project-s-documentation">
+<h1>Welcome to The Nurse Project&#8217;s documentation!<a class="headerlink" href="#welcome-to-the-nurse-project-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p>Contents:</p>
 <ul class="simple">
 </ul>
@@ -51,6 +54,2341 @@
 <li><a class="reference external" href="search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
+<div class="section" id="module-nurse.base">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.base</span></tt><a class="headerlink" href="#module-nurse.base" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.base.Object">
+<em class="property">class </em><tt class="descclassname">nurse.base.</tt><tt class="descname">Object</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#nurse.base.Object" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.base.Object.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.base.Object.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.base.Object.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.base.Object.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.base.Object.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.base.Object.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.base.Object.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.base.Object.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.base.Object.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.base.Object.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.state_machine">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.state_machine</span></tt><a class="headerlink" href="#module-nurse.state_machine" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.state_machine.State">
+<em class="property">class </em><tt class="descclassname">nurse.state_machine.</tt><tt class="descname">State</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.state_machine.State.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.State.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.State.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.State.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.state_machine.StateMachine">
+<em class="property">class </em><tt class="descclassname">nurse.state_machine.</tt><tt class="descname">StateMachine</tt><big>(</big><em>name='state machine'</em>, <em>context=None</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.state_machine.StateMachine.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.sprite">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.sprite</span></tt><a class="headerlink" href="#module-nurse.sprite" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.sprite.Dialog">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">Dialog</tt><big>(</big><em>name='dialog'</em>, <em>context=None</em>, <em>layer=2</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.Dialog.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd>Return frame infos for a given time : image uuid, center location</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Dialog.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.Dialog.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.FpsSprite">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">FpsSprite</tt><big>(</big><em>name='fps'</em>, <em>context=None</em>, <em>layer=3</em>, <em>fg_color=(255</em>, <em>255</em>, <em>255)</em>, <em>bg_color=(0</em>, <em>0</em>, <em>0)</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and display current FPS (Frames per second) rate.</p>
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd>Return frame infos for a given time : image uuid, center location</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.FpsSprite.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.FpsSprite.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.MovingSprite">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">MovingSprite</tt><big>(</big><em>name='moving sprite'</em>, <em>context=None</em>, <em>layer=2</em>, <em>speed=100.0</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.MovingSprite.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd>Return frame infos for a given time : image uuid, center location</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.get_next_checkpoint_id">
+<tt class="descname">get_next_checkpoint_id</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.get_next_checkpoint_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.set_current_state_from_path">
+<tt class="descname">set_current_state_from_path</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.set_current_state_from_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.set_path">
+<tt class="descname">set_path</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.set_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.MovingSprite.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.MovingSprite.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update location and state of the sprite.</p>
+<p>dt : time since last update</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.Player">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">Player</tt><big>(</big><em>name='sprite'</em>, <em>context=None</em>, <em>layer=2</em>, <em>speed=100.0</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.Player.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd>Return frame infos for a given time : image uuid, center location</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Player.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Player.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.Player.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.Sprite">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">Sprite</tt><big>(</big><em>name='sprite'</em>, <em>context=None</em>, <em>layer=1</em>, <em>speed=100.0</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.Sprite.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd>Return frame infos for a given time : image uuid, center location</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Sprite.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.Sprite.update" title="Permalink to this definition">¶</a></dt>
+<dd>Update sprite location (in world coordinates) according to its
+control state and current active frame</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.StaticSprite">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">StaticSprite</tt><big>(</big><em>name</em>, <em>context</em>, <em>layer=0</em>, <em>imgname=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.StaticSprite.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.StaticSprite.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.StaticSprite.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.Text">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">Text</tt><big>(</big><em>name='text'</em>, <em>context=None</em>, <em>layer=2</em>, <em>text='...'</em>, <em>font='Times New Roman'</em>, <em>font_size=20</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.Text.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd>Return frame infos for a given time : image uuid, center location</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.Text.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.Text.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.Text.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.sprite.UniformLayer">
+<em class="property">class </em><tt class="descclassname">nurse.sprite.</tt><tt class="descname">UniformLayer</tt><big>(</big><em>name</em>, <em>context</em>, <em>layer=2</em>, <em>size=None</em>, <em>shift=(0</em>, <em>0)</em>, <em>color=(0</em>, <em>0</em>, <em>0)</em>, <em>alpha=128</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.sprite.UniformLayer.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.get_frame_infos">
+<tt class="descname">get_frame_infos</tt><big>(</big><em>time</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.get_frame_infos" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.get_location">
+<tt class="descname">get_location</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.get_location" title="Permalink to this definition">¶</a></dt>
+<dd>Return sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.load_frames_from_filenames">
+<tt class="descname">load_frames_from_filenames</tt><big>(</big><em>state</em>, <em>frames_fnames=</em><span class="optional">[</span><span class="optional">]</span>, <em>center_location=(0</em>, <em>0)</em>, <em>fps=30</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.load_frames_from_filenames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load frames from images (one image per file) for a given state</p>
+<dl class="docutils">
+<dt>state:           A valid state of the Sprite State Machine.</dt>
+<dd>If state equals __default__, these frames are used for
+each state without any frames.
+If frames_fnames is [] then no sprite is displayed for
+the given state.</dd>
+</dl>
+<p>frames_fnames:   liste of filenames.
+center_location: - tuple of coordinates in pixel from the bottom left corner</p>
+<blockquote>
+<blockquote>
+<blockquote>
+of the images (the same shift for all images).</blockquote>
+<ul class="simple">
+<li>list of coordinates in pixel from the bottom left corner
+of the images (one shift per image).</li>
+</ul>
+</blockquote>
+<p>or - &#8216;centered&#8217;: the center is centered on the images.
+or - &#8216;centered_bottom&#8217;: the center is centered on the bottom</p>
+<blockquote>
+of the images.</blockquote>
+</blockquote>
+<p>fps:             number of frames per seconds.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.set_location">
+<tt class="descname">set_location</tt><big>(</big><em>location</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.set_location" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite location in world coordinate system</dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.sprite.UniformLayer.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.sprite.UniformLayer.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.screen">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.screen</span></tt><a class="headerlink" href="#module-nurse.screen" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.screen.VirtualScreen">
+<em class="property">class </em><tt class="descclassname">nurse.screen.</tt><tt class="descname">VirtualScreen</tt><big>(</big><em>name</em>, <em>geometry=(0</em>, <em>0</em>, <em>320</em>, <em>200)</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.screen.VirtualScreen.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreen.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreen.display_context">
+<tt class="descname">display_context</tt><big>(</big><em>context</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.display_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreen.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreen.get_ref">
+<tt class="descname">get_ref</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.get_ref" title="Permalink to this definition">¶</a></dt>
+<dd>Return the referential coordinates (top-left corner of the virtual screen
+defined in real screen pixel coordinates).</dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreen.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreen.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreen.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.screen.VirtualScreenRealCoordinates">
+<em class="property">class </em><tt class="descclassname">nurse.screen.</tt><tt class="descname">VirtualScreenRealCoordinates</tt><big>(</big><em>name='default_screen_real_coords'</em>, <em>geometry=(0</em>, <em>0</em>, <em>320</em>, <em>200)</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.display_context">
+<tt class="descname">display_context</tt><big>(</big><em>context</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.display_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.get_ref">
+<tt class="descname">get_ref</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.get_ref" title="Permalink to this definition">¶</a></dt>
+<dd>Return the referential coordinates (top-left corner of the virtual screen
+defined in real screen pixel coordinates).</dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenRealCoordinates.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenRealCoordinates.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates">
+<em class="property">class </em><tt class="descclassname">nurse.screen.</tt><tt class="descname">VirtualScreenWorldCoordinates</tt><big>(</big><em>name='default_screen'</em>, <em>geometry=(0</em>, <em>0</em>, <em>320</em>, <em>200)</em>, <em>focus=array(</em><span class="optional">[</span>, <em>0</em>, <em>0</em><span class="optional">]</span>, <em>)</em>, <em>focus_on=None</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.display_context">
+<tt class="descname">display_context</tt><big>(</big><em>context</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.display_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.get_ref">
+<tt class="descname">get_ref</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.get_ref" title="Permalink to this definition">¶</a></dt>
+<dd>Return the referential coordinates (top-left corner of the virtual screen
+defined in real screen pixel coordinates).</dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.on_focus_changed">
+<tt class="descname">on_focus_changed</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.on_focus_changed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.set_focus">
+<tt class="descname">set_focus</tt><big>(</big><em>focus</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.set_focus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.screen.VirtualScreenWorldCoordinates.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.screen.VirtualScreenWorldCoordinates.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.context">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.context</span></tt><a class="headerlink" href="#module-nurse.context" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.context.Context">
+<em class="property">class </em><tt class="descclassname">nurse.context.</tt><tt class="descname">Context</tt><big>(</big><em>name</em>, <em>is_visible=True</em>, <em>is_active=True</em>, <em>_is_receiving_events=True</em><big>)</big><a class="headerlink" href="#nurse.context.Context" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.context.Context.add_fsm">
+<tt class="descname">add_fsm</tt><big>(</big><em>fsm</em><big>)</big><a class="headerlink" href="#nurse.context.Context.add_fsm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.add_screen">
+<tt class="descname">add_screen</tt><big>(</big><em>screen</em><big>)</big><a class="headerlink" href="#nurse.context.Context.add_screen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.context.Context.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.add_visible_data">
+<tt class="descname">add_visible_data</tt><big>(</big><em>data</em>, <em>layer=0</em><big>)</big><a class="headerlink" href="#nurse.context.Context.add_visible_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.context.Context.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.context.Context.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.delegate">
+<tt class="descname">delegate</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.context.Context.delegate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.context.Context.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.display">
+<tt class="descname">display</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.Context.display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.context.Context.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.get_visible_data">
+<tt class="descname">get_visible_data</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.Context.get_visible_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.Context.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.Context.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.Context.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.context.Context.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.context.Context.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.context.Context.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.set_visible">
+<tt class="descname">set_visible</tt><big>(</big><em>sprite</em>, <em>is_visible</em>, <em>layer=None</em><big>)</big><a class="headerlink" href="#nurse.context.Context.set_visible" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite visible or invisible in its parent context</dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.Context.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.context.Context.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.context.ContextManager">
+<em class="property">class </em><tt class="descclassname">nurse.context.</tt><tt class="descname">ContextManager</tt><a class="headerlink" href="#nurse.context.ContextManager" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.context.ContextManager.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.display">
+<tt class="descname">display</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.receive_events">
+<tt class="descname">receive_events</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.receive_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.context.ContextManager.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.context.ContextManager.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.config">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.config</span></tt><a class="headerlink" href="#module-nurse.config" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.config.Config">
+<em class="property">class </em><tt class="descclassname">nurse.config.</tt><tt class="descname">Config</tt><a class="headerlink" href="#nurse.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="classmethod">
+<dt id="nurse.config.Config.get_default_context">
+<em class="property">classmethod </em><tt class="descname">get_default_context</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.config.Config.get_default_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="nurse.config.Config.get_event_loop">
+<em class="property">classmethod </em><tt class="descname">get_event_loop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.config.Config.get_event_loop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="nurse.config.Config.get_graphic_engine">
+<em class="property">classmethod </em><tt class="descname">get_graphic_engine</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.config.Config.get_graphic_engine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="nurse.config.Config.get_keyboard_device">
+<em class="property">classmethod </em><tt class="descname">get_keyboard_device</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.config.Config.get_keyboard_device" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="nurse.config.Config.init">
+<em class="property">classmethod </em><tt class="descname">init</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.config.Config.init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="nurse.config.Config.read_config_file">
+<em class="property">classmethod </em><tt class="descname">read_config_file</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.config.Config.read_config_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.events">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.events</span></tt><a class="headerlink" href="#module-nurse.events" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.events.Event">
+<em class="property">class </em><tt class="descclassname">nurse.events.</tt><tt class="descname">Event</tt><a class="headerlink" href="#nurse.events.Event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="nurse.events.SignalEvent">
+<em class="property">class </em><tt class="descclassname">nurse.events.</tt><tt class="descname">SignalEvent</tt><big>(</big><em>sender</em>, <em>method</em>, <em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.events.SignalEvent" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.events.SignalEvent.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.events.SignalEvent.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-nurse.backends">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.backends</span></tt><a class="headerlink" href="#module-nurse.backends" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.backends.EventLoop">
+<em class="property">class </em><tt class="descclassname">nurse.backends.</tt><tt class="descname">EventLoop</tt><big>(</big><em>fps=60.0</em><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.backends.EventLoop.add_event">
+<tt class="descname">add_event</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.add_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.EventLoop.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.EventLoop.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.EventLoop.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.EventLoop.get_events">
+<tt class="descname">get_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.get_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.EventLoop.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.EventLoop.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.backends.EventLoop.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.backends.GraphicEngine">
+<em class="property">class </em><tt class="descclassname">nurse.backends.</tt><tt class="descname">GraphicEngine</tt><a class="headerlink" href="#nurse.backends.GraphicEngine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.backends.GraphicEngine.clean">
+<tt class="descname">clean</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.clean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.display_context">
+<tt class="descname">display_context</tt><big>(</big><em>screen</em>, <em>context</em><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.display_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.display_object">
+<tt class="descname">display_object</tt><big>(</big><em>screen</em>, <em>obj</em><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.display_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.display_sprite">
+<tt class="descname">display_sprite</tt><big>(</big><em>screen</em>, <em>sprite</em><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.display_sprite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.flip">
+<tt class="descname">flip</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.flip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.get_uniform_surface">
+<tt class="descname">get_uniform_surface</tt><big>(</big><em>shift=(0</em>, <em>0)</em>, <em>size=None</em>, <em>color=(0</em>, <em>0</em>, <em>0)</em>, <em>alpha=128</em><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.get_uniform_surface" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.load_image">
+<tt class="descname">load_image</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.load_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.GraphicEngine.load_text">
+<tt class="descname">load_text</tt><big>(</big><em>text</em>, <em>font='Times New Roman'</em>, <em>font_size=20</em>, <em>x=0</em>, <em>y=0</em><big>)</big><a class="headerlink" href="#nurse.backends.GraphicEngine.load_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.backends.ImageProxy">
+<em class="property">class </em><tt class="descclassname">nurse.backends.</tt><tt class="descname">ImageProxy</tt><big>(</big><em>raw_image</em><big>)</big><a class="headerlink" href="#nurse.backends.ImageProxy" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.backends.ImageProxy.get_raw_image">
+<tt class="descname">get_raw_image</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.backends.ImageProxy.get_raw_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.backends.KeyBoardDevice">
+<em class="property">class </em><tt class="descclassname">nurse.backends.</tt><tt class="descname">KeyBoardDevice</tt><a class="headerlink" href="#nurse.backends.KeyBoardDevice" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.backends.KeyBoardDevice.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.backends.KeyBoardDevice.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.KeyBoardDevice.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.backends.KeyBoardDevice.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.KeyBoardDevice.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.backends.KeyBoardDevice.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.KeyBoardDevice.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.backends.KeyBoardDevice.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.backends.KeyBoardDevice.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.backends.KeyBoardDevice.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="nurse-pyglet-backend">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.pyglet_backend</span></tt><a class="headerlink" href="#nurse-pyglet-backend" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="nurse-sdl-backend">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.sdl_backend</span></tt><a class="headerlink" href="#nurse-sdl-backend" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-nurse.game.dialog">
+<h1><tt class="xref docutils literal"><span class="pre">nurse.game.dialog</span></tt><a class="headerlink" href="#module-nurse.game.dialog" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="nurse.game.dialog.DialogContext">
+<em class="property">class </em><tt class="descclassname">nurse.game.dialog.</tt><tt class="descname">DialogContext</tt><big>(</big><em>name</em>, <em>msg</em>, <em>is_visible=True</em>, <em>is_active=True</em>, <em>_is_receiving_events=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_fsm">
+<tt class="descname">add_fsm</tt><big>(</big><em>fsm</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_fsm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_screen">
+<tt class="descname">add_screen</tt><big>(</big><em>screen</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_screen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_visible_data">
+<tt class="descname">add_visible_data</tt><big>(</big><em>data</em>, <em>layer=0</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_visible_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.delegate">
+<tt class="descname">delegate</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.delegate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.display">
+<tt class="descname">display</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.get_visible_data">
+<tt class="descname">get_visible_data</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.get_visible_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.set_visible">
+<tt class="descname">set_visible</tt><big>(</big><em>sprite</em>, <em>is_visible</em>, <em>layer=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.set_visible" title="Permalink to this definition">¶</a></dt>
+<dd>set sprite visible or invisible in its parent context</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.game.dialog.DialogListener">
+<em class="property">class </em><tt class="descclassname">nurse.game.dialog.</tt><tt class="descname">DialogListener</tt><a class="headerlink" href="#nurse.game.dialog.DialogListener" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.game.dialog.DialogListener.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.on_dialog_finish">
+<tt class="descname">on_dialog_finish</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.on_dialog_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.on_dialog_start">
+<tt class="descname">on_dialog_start</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.on_dialog_start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.on_fast_forward">
+<tt class="descname">on_fast_forward</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.on_fast_forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.game.dialog.DialogState">
+<em class="property">class </em><tt class="descclassname">nurse.game.dialog.</tt><tt class="descname">DialogState</tt><big>(</big><em>name='text'</em>, <em>text='...'</em>, <em>font='Times New Roman'</em>, <em>font_size=20</em>, <em>text_area=None</em>, <em>perso=None</em>, <em>char_per_sec=5.0</em>, <em>typing_machine_mode=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.game.dialog.DialogState.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>mimic qt signal/slot connection</p>
+<dl class="docutils">
+<dt>signal:        any pickable object. If signal is equal to __all__ the slot</dt>
+<dd>function will be called for any signal.</dd>
+</dl>
+<p>receiver:      destination object.
+slot:          name of the function to call on the receiver.
+asynchronous:  true if the the slot is queued in the eventloop.</p>
+<blockquote>
+false if the slot is called directly during the emit call.</blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.emit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.set_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 
 
           </div>
@@ -60,10 +2398,21 @@
         <div class="sphinxsidebarwrapper">
             <h3><a href="">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Welcome to Nurse&#8217;s documentation!</a><ul>
+<li><a class="reference external" href="">Welcome to The Nurse Project&#8217;s documentation!</a><ul>
 </ul>
 </li>
 <li><a class="reference external" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference external" href="#module-nurse.base"><tt class="docutils literal"><span class="pre">nurse.base</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.state_machine"><tt class="docutils literal"><span class="pre">nurse.state_machine</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.sprite"><tt class="docutils literal"><span class="pre">nurse.sprite</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.screen"><tt class="docutils literal"><span class="pre">nurse.screen</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.context"><tt class="docutils literal"><span class="pre">nurse.context</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.config"><tt class="docutils literal"><span class="pre">nurse.config</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.events"><tt class="docutils literal"><span class="pre">nurse.events</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.backends"><tt class="docutils literal"><span class="pre">nurse.backends</span></tt></a></li>
+<li><a class="reference external" href="#nurse-pyglet-backend"><tt class="docutils literal"><span class="pre">nurse.pyglet_backend</span></tt></a></li>
+<li><a class="reference external" href="#nurse-sdl-backend"><tt class="docutils literal"><span class="pre">nurse.sdl_backend</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.game.dialog"><tt class="docutils literal"><span class="pre">nurse.game.dialog</span></tt></a></li>
 </ul>
 
             <h3>This Page</h3>
@@ -94,7 +2443,10 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="">Nurse v0.1 documentation</a> &raquo;</li> 
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li><a href="">The Nurse Project v0.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
