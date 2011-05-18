@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Generating documentation using Sphinx on GitHub &mdash; The Nurse Project v0.1 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="top" title="The Nurse Project v0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to The Nurse Project’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to The Nurse Project’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="generating-documentation-using-sphinx-on-github">
+<h1>Generating documentation using <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a> on <a class="reference external" href="http://www.github.com">GitHub</a><a class="headerlink" href="#generating-documentation-using-sphinx-on-github" title="Permalink to this headline">¶</a></h1>
+<p>Using :</p>
+<ul class="simple">
+<li>a <a class="reference external" href="http://www.github.com">GitHub</a> account and repository</li>
+<li>activated <a class="reference external" href="http://www.github.com">GitHub</a> webpages</li>
+<li>installed versions of <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a> and <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">sphinx-to-github</a></li>
+</ul>
+<p>This <em>Howto</em> looks a bit like this other one <a class="reference external" href="http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/">http://lucasbardella.com/report/hosting-your-sphinx-docs-in-github/</a>.</p>
+<div class="section" id="create-a-new-root-branch-named-gh-pages-on-your-repository">
+<h2>Create a new root branch named <tt class="docutils literal"><span class="pre">gh-pages</span></tt> on your repository<a class="headerlink" href="#create-a-new-root-branch-named-gh-pages-on-your-repository" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="http://pages.github.com">http://pages.github.com</a> for details on this step. The code should look like this.</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">cd</span> /path/to/fancypants
+<span class="gp">$</span> git symbolic-ref HEAD refs/heads/gh-pages
+<span class="gp">$</span> rm .git/index
+<span class="gp">$</span> git clean -fdx
+</pre></div>
+</div>
+<p>After running this you’ll have an empty working directory (don’t worry, your main repo is still on the master <tt class="docutils literal"><span class="pre">branch</span></tt>). Now you can create some content in this branch and push it to GitHub. For example:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">&quot;My GitHub Page&quot;</span> &gt; index.html
+<span class="gp">$</span> git add .
+<span class="gp">$</span> git commit -a -m <span class="s2">&quot;First pages commit&quot;</span>
+<span class="gp">$</span> git push origin gh-pages
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-your-documentation-source-using-sphinx-quickstart">
+<h2>Create your documentation source using <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt><a class="headerlink" href="#create-your-documentation-source-using-sphinx-quickstart" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="http://packages.python.org/an_example_pypi_project/sphinx.html">http://packages.python.org/an_example_pypi_project/sphinx.html</a> for details on this step.</p>
+<p>The first step prepares the documentation file structure in a directory using <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt>.</p>
+<p>To get started, <tt class="docutils literal"><span class="pre">cd</span></tt> into the documentation directory and type:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> sphinx-quickstart
+
+<span class="go">Please enter values for the following settings</span>
+<span class="go">(just press Enter to accept a default value, if</span>
+<span class="go">one is given in brackets).</span>
+</pre></div>
+</div>
+<p>Then you should get:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">Finished: An initial directory structure has been created.</span>
+
+<span class="go">You should now populate your master file .\source\index.rst and create other documentation</span>
+<span class="go">source files. Use the sphinx-build command to build the docs, like so:</span>
+<span class="go">sphinx-build -b builder .\source .\build</span>
+<span class="go">where &quot;builder&quot; is one of the supported builders, e.g. html, latex or linkcheck.</span>
+</pre></div>
+</div>
+<p>Now get in the documentation path and write some doc in the master file <tt class="docutils literal"><span class="pre">index.rst</span></tt> following directions from <a class="reference external" href="http://matplotlib.sourceforge.net/sampledoc/cheatsheet.html">http://matplotlib.sourceforge.net/sampledoc/cheatsheet.html</a> or <a class="reference external" href="http://packages.python.org/an_example_pypi_project/sphinx.html">http://packages.python.org/an_example_pypi_project/sphinx.html</a>.</p>
+</div>
+<div class="section" id="install-sphinx-to-github-extension-and-configure-conf-py">
+<h2>Install <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">sphinx-to-github</a> extension and configure <tt class="docutils literal"><span class="pre">conf.py</span></tt><a class="headerlink" href="#install-sphinx-to-github-extension-and-configure-conf-py" title="Permalink to this headline">¶</a></h2>
+<p>Note that the directory contains two subdirs named <tt class="docutils literal"><span class="pre">_sources</span></tt> and <tt class="docutils literal"><span class="pre">_static</span></tt>. The <tt class="docutils literal"><span class="pre">_</span></tt> prefix is known to get misinterpreted by GitHub. The <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">sphinx-to-github</a> script precisely aims at correcting this prefix effect. As written on its GitHub page, <tt class="docutils literal"><span class="pre">sphinxtogithub.py</span></tt> can be run on the command line or used as a Sphinx extension (e.g. in the <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory). Remember that if used as an extension from the <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory, then you should add <tt class="docutils literal"><span class="pre">sphinx.ext.sphinxtogithub</span></tt> to the list named <tt class="docutils literal"><span class="pre">extensions</span></tt> contained in the <tt class="docutils literal"><span class="pre">conf.py</span></tt> file in the documentation directory. For instance, it might look like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;sphinx.ext.sphinxtogithub&#39;</span><span class="p">,</span> <span class="s">&#39;sphinx.ext.autodoc&#39;</span><span class="p">,</span> <span class="s">&#39;sphinx.ext.doctest&#39;</span><span class="p">,</span> <span class="s">&#39;sphinx.ext.intersphinx&#39;</span><span class="p">,</span> <span class="s">&#39;sphinx.ext.todo&#39;</span><span class="p">,</span> <span class="s">&#39;sphinx.ext.coverage&#39;</span><span class="p">,</span> <span class="s">&#39;sphinx.ext.pngmath&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generate-html-or-pdf-or-man-pages-using-sphinx-build">
+<h2>Generate HTML (or pdf, or man, ...) pages using <a class="reference external" href="http://sphinx.pocoo.org/invocation.html">sphinx-build</a><a class="headerlink" href="#generate-html-or-pdf-or-man-pages-using-sphinx-build" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="http://sphinx.pocoo.org/invocation.html">http://sphinx.pocoo.org/invocation.html</a> for details on this step.</p>
+<p>From the documentation directory, the command could be as simple as :</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> sphinx-build -b html . ./build
+</pre></div>
+</div>
+<p>This creates the HTML pages from the <tt class="docutils literal"><span class="pre">.rst</span></tt> pages and runs the <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">sphinx-to-github</a> extension to correct the <tt class="docutils literal"><span class="pre">_</span></tt> prefix effect before committing.</p>
+</div>
+<div class="section" id="populate-your-gh-pages-branch-with-the-build-directory">
+<h2>Populate your <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch with the <tt class="docutils literal"><span class="pre">build</span></tt> directory<a class="headerlink" href="#populate-your-gh-pages-branch-with-the-build-directory" title="Permalink to this headline">¶</a></h2>
+<p>At this step, I usually copy the files and subdirs contained in the <tt class="docutils literal"><span class="pre">build</span></tt> directory generated by <tt class="docutils literal"><span class="pre">sphinx-build</span></tt> to the empty <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch. There should be no directory starting with <tt class="docutils literal"><span class="pre">_</span></tt> or <tt class="docutils literal"><span class="pre">.rst</span></tt> files since this branch is made for HTML webpages. If you wish to get version control on your documentation source files, then you might store them in a specific subdir or possibly in a different branch. Some resources on the web explain how to avoid switching branches in order to write documentation but it is not explained here.</p>
+<p>Add your files to the repository, commit and push to the <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch.</p>
+<p>Visit the website <a class="reference external" href="http://you.github.com/your_repository/">http://you.github.com/your_repository/</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Generating documentation using Sphinx on GitHub</a><ul>
+<li><a class="reference external" href="#create-a-new-root-branch-named-gh-pages-on-your-repository">Create a new root branch named <tt class="docutils literal"><span class="pre">gh-pages</span></tt> on your repository</a></li>
+<li><a class="reference external" href="#create-your-documentation-source-using-sphinx-quickstart">Create your documentation source using <tt class="docutils literal"><span class="pre">sphinx-quickstart</span></tt></a></li>
+<li><a class="reference external" href="#install-sphinx-to-github-extension-and-configure-conf-py">Install sphinx-to-github extension and configure <tt class="docutils literal"><span class="pre">conf.py</span></tt></a></li>
+<li><a class="reference external" href="#generate-html-or-pdf-or-man-pages-using-sphinx-build">Generate HTML (or pdf, or man, ...) pages using sphinx-build</a></li>
+<li><a class="reference external" href="#populate-your-gh-pages-branch-with-the-build-directory">Populate your <tt class="docutils literal"><span class="pre">gh-pages</span></tt> branch with the <tt class="docutils literal"><span class="pre">build</span></tt> directory</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Welcome to The Nurse Project&#8217;s documentation!</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="sources/generating_documentation_using_sphinx_on_github.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to The Nurse Project’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, Grégory Operto, Matthieu Perrot, Thomas Vincent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

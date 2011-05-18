@@ -9,7 +9,9 @@ Welcome to The Nurse Project's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
+
+   generating_documentation_using_sphinx_on_github
 
 Indices and tables
 ==================
@@ -27,7 +29,7 @@ Indices and tables
    :inherited-members:
 
 :mod:`nurse.state_machine`
-=========================
+==========================
 
 .. automodule:: nurse.state_machine
    :members:
