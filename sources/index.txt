@@ -12,6 +12,9 @@ Contents:
    :maxdepth: 1
 
    generating_documentation_using_sphinx_on_github
+   minimal_example
+   blink
+   timer_and_space
 
 Indices and tables
 ==================
@@ -30,6 +33,11 @@ Indices and tables
 
 :mod:`nurse.state_machine`
 ==========================
+
+.. warning::
+
+   Don't forget that a Context inheritates from State, a ContextManager inheritates
+   from StateMachine and StateMachine inheritates from State.
 
 .. automodule:: nurse.state_machine
    :members:
@@ -108,3 +116,10 @@ Indices and tables
    :undoc-members:
    :inherited-members:
 
+:mod:`nurse.timer`
+=========================
+
+.. automodule:: nurse.timer
+   :members:
+   :undoc-members:
+   :inherited-members:

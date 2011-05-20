@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>A Blinking Example &mdash; The Nurse Project v0.1 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="The Nurse Project v0.1 documentation" href="index.html" />
+    <link rel="next" title="An Example Between Timer and Space" href="timer_and_space.html" />
+    <link rel="prev" title="A Minimal Example" href="minimal_example.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="timer_and_space.html" title="An Example Between Timer and Space"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="minimal_example.html" title="A Minimal Example"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="a-blinking-example">
+<h1>A Blinking Example<a class="headerlink" href="#a-blinking-example" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: iso-8859-15 -*-</span>
+
+<span class="kn">from</span> <span class="nn">nurse.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">nurse.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span> <span class="nn">nurse.sprite</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">nurse.context</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">ContextManager</span>
+<span class="kn">from</span> <span class="nn">nurse.screen</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">nurse.state_machine</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">Incrementator</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">Object</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s">&#39;default_name&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_is_text_visible</span> <span class="o">=</span> <span class="bp">True</span>
+
+        <span class="k">def</span> <span class="nf">on_time_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_text_visible</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_is_text_visible</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_text_visible</span>
+
+<span class="k">class</span> <span class="nc">Timer</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="kn">import</span> <span class="nn">pyglet</span>
+                <span class="n">pyglet</span><span class="o">.</span><span class="n">clock</span><span class="o">.</span><span class="n">schedule_interval</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">tick</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
+        <span class="k">def</span> <span class="nf">tick</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dt</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&quot;time_event&quot;</span><span class="p">)</span>
+                <span class="k">print</span> <span class="s">&#39;hello&#39;</span><span class="p">,</span> <span class="n">dt</span>
+
+<span class="k">class</span> <span class="nc">Blinker</span><span class="p">(</span><span class="n">StateMachine</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&#39;state machine&#39;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+                <span class="n">StateMachine</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+                <span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="n">State</span><span class="p">(</span><span class="s">&#39;visible&#39;</span><span class="p">),</span> <span class="n">State</span><span class="p">(</span><span class="s">&#39;not_visible&#39;</span><span class="p">)]</span>
+                <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_state</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+                <span class="k">print</span> <span class="n">dt</span>
+<span class="c">#-------------------------------------------------------------------------------</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+        <span class="n">Config</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="s">&#39;pyglet&#39;</span>
+        <span class="n">Config</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+        <span class="c">#FIXME : find another way to add the device</span>
+        <span class="n">context_manager</span> <span class="o">=</span> <span class="n">ContextManager</span><span class="p">()</span>
+        <span class="n">universe</span><span class="o">.</span><span class="n">context_manager</span> <span class="o">=</span> <span class="n">context_manager</span>
+
+        <span class="c"># manage context</span>
+        <span class="n">properties_all_active</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;is_visible&#39;</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">&#39;is_active&#39;</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+                                <span class="s">&#39;_is_receiving_events&#39;</span> <span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+        <span class="n">properties_not_receiving</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#39;is_visible&#39;</span> <span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">&#39;is_active&#39;</span> <span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+                                <span class="s">&#39;_is_receiving_events&#39;</span> <span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+
+        <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="s">&quot;Context&quot;</span><span class="p">,</span> <span class="o">**</span> <span class="n">properties_all_active</span><span class="p">)</span>
+        <span class="n">context_manager</span><span class="o">.</span><span class="n">add_state</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">context_manager</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">context_manager</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="n">resolution</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">resolution</span>
+        <span class="n">geometry</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">resolution</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">screen_fixed</span> <span class="o">=</span> <span class="n">VirtualScreenRealCoordinates</span><span class="p">(</span><span class="s">&#39;fixed screen&#39;</span><span class="p">,</span> <span class="n">geometry</span><span class="p">)</span>
+
+        <span class="c"># dialog context</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">add_screen</span><span class="p">(</span><span class="n">screen_fixed</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="s">&#39;text&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;bonjour&#39;</span><span class="p">)</span>
+        <span class="n">text</span><span class="o">.</span><span class="n">set_location</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+        <span class="n">incrementator</span> <span class="o">=</span> <span class="n">Incrementator</span><span class="p">()</span>
+        <span class="n">incrementator</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+        <span class="n">incrementator</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&#39;timer&#39;</span><span class="p">)</span>
+        <span class="n">timer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">timer</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;time_event&#39;</span><span class="p">,</span> <span class="n">incrementator</span><span class="p">,</span> <span class="s">&#39;on_time_event&#39;</span><span class="p">)</span>
+        <span class="n">context_aux</span> <span class="o">=</span> <span class="n">Context</span><span class="p">(</span><span class="s">&quot;ContextAux&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">properties_not_receiving</span><span class="p">)</span>
+        <span class="n">context_manager</span><span class="o">.</span><span class="n">add_state</span><span class="p">(</span><span class="n">context_aux</span><span class="p">)</span>
+        <span class="n">blinker</span> <span class="o">=</span> <span class="n">Blinker</span><span class="p">(</span><span class="s">&#39;blinker&#39;</span><span class="p">,</span> <span class="n">context_aux</span><span class="p">)</span>
+        <span class="c"># FPS</span>
+        <span class="n">event_loop</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+        <span class="n">event_loop</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span> <span class="p">:</span> <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="minimal_example.html"
+                                  title="previous chapter">A Minimal Example</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="timer_and_space.html"
+                                  title="next chapter">An Example Between Timer and Space</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="sources/blink.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="timer_and_space.html" title="An Example Between Timer and Space"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="minimal_example.html" title="A Minimal Example"
+             >previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, Grégory Operto, Matthieu Perrot, Thomas Vincent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
