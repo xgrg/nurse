@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dialogs in The Nurse Project &mdash; The Nurse Project v0.1 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="The Nurse Project v0.1 documentation" href="index.html" />
+    <link rel="next" title="A Minimal Example" href="minimal_example.html" />
+    <link rel="prev" title="Generating documentation using Sphinx on GitHub" href="generating_documentation_using_sphinx_on_github.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="minimal_example.html" title="A Minimal Example"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="generating_documentation_using_sphinx_on_github.html" title="Generating documentation using Sphinx on GitHub"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dialogs-in-the-nurse-project">
+<h1>Dialogs in The Nurse Project<a class="headerlink" href="#dialogs-in-the-nurse-project" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">22/05/2011</p>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">main()</span></tt> function may instanciate a <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt>
+which is added to a list of contexts managed by the <a title="nurse.context.ContextManager" class="reference external" href="index.html#nurse.context.ContextManager"><tt class="xref docutils literal"><span class="pre">nurse.context.ContextManager</span></tt></a>.
+The <tt class="xref docutils literal"><span class="pre">nurse.game.DialogContext</span></tt> <tt class="docutils literal"><span class="pre">__init__()</span></tt> function instanciates various
+sprites (such as <a title="nurse.sprite.UniformLayer" class="reference external" href="index.html#nurse.sprite.UniformLayer"><tt class="xref docutils literal"><span class="pre">nurse.sprite.UniformLayer</span></tt></a>), a <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>
+(<a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> (<a title="nurse.state_machine.StateMachine" class="reference external" href="index.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>) ) and a
+<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogListener</span></tt>.</p>
+<p>As a <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and therefore a <a title="nurse.state_machine.StateMachine" class="reference external" href="index.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>,
+the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> has a member <tt class="docutils literal"><span class="pre">states</span></tt> which is a list of
+<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt> (<a title="nurse.state_machine.State" class="reference external" href="index.html#nurse.state_machine.State"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.State</span></tt></a>).
+The <a title="nurse.sprite.Dialog.update" class="reference external" href="index.html#nurse.sprite.Dialog.update"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog.update()</span></tt></a> function actually just calls the
+<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState.update()</span></tt> function of the <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt>
+defined by the member <tt class="docutils literal"><span class="pre">_current_state</span></tt> of the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>.</p>
+<p>For each <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and in particular for the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>,
+the method <a title="nurse.state_machine.StateMachine.start" class="reference external" href="index.html#nurse.state_machine.StateMachine.start"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt></a> is called, which initializes
+the member <tt class="docutils literal"><span class="pre">_current_state</span></tt> with <tt class="docutils literal"><span class="pre">_initial_state</span></tt>, should it be previously defined
+by the method <a title="nurse.state_machine.StateMachine.set_initial_state" class="reference external" href="index.html#nurse.state_machine.StateMachine.set_initial_state"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.set_initial_state()</span></tt></a> or by a
+default instance created in that same <a title="nurse.state_machine.StateMachine.start" class="reference external" href="index.html#nurse.state_machine.StateMachine.start"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt></a>
+function. Then the <a title="nurse.context.ContextManager" class="reference external" href="index.html#nurse.context.ContextManager"><tt class="xref docutils literal"><span class="pre">nurse.context.ContextManager</span></tt></a> updates its <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a>,
+or more specifically each <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a> has its <a title="nurse.state_machine.StateMachine" class="reference external" href="index.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>
+updated. With regard to this, the <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt> updates its sprites,
+therefore the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> and its current <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="generating_documentation_using_sphinx_on_github.html"
+                                  title="previous chapter">Generating documentation using Sphinx on GitHub</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="minimal_example.html"
+                                  title="next chapter">A Minimal Example</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="sources/nurse_game_dialog.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="minimal_example.html" title="A Minimal Example"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="generating_documentation_using_sphinx_on_github.html" title="Generating documentation using Sphinx on GitHub"
+             >previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, Grégory Operto, Matthieu Perrot, Thomas Vincent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
