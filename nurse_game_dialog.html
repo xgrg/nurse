@@ -55,29 +55,333 @@
 <p class="first admonition-title">Note</p>
 <p class="last">22/05/2011</p>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">main()</span></tt> function may instanciate a <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt>
+<p>The <tt class="docutils literal"><span class="pre">main()</span></tt> function may instanciate a <a title="nurse.game.dialog.DialogContext" class="reference internal" href="#nurse.game.dialog.DialogContext"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt></a>
 which is added to a list of contexts managed by the <a title="nurse.context.ContextManager" class="reference external" href="index.html#nurse.context.ContextManager"><tt class="xref docutils literal"><span class="pre">nurse.context.ContextManager</span></tt></a>.
 The <tt class="xref docutils literal"><span class="pre">nurse.game.DialogContext</span></tt> <tt class="docutils literal"><span class="pre">__init__()</span></tt> function instanciates various
 sprites (such as <a title="nurse.sprite.UniformLayer" class="reference external" href="index.html#nurse.sprite.UniformLayer"><tt class="xref docutils literal"><span class="pre">nurse.sprite.UniformLayer</span></tt></a>), a <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>
-(<a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> (<tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt>) ) and a
-<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogListener</span></tt>.</p>
-<p>As a <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and therefore a <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt>,
+(<a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> (<a title="nurse.state_machine.StateMachine" class="reference external" href="nurse_statemachine.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>) ) and a
+<a title="nurse.game.dialog.DialogListener" class="reference internal" href="#nurse.game.dialog.DialogListener"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogListener</span></tt></a>.</p>
+<p>As a <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and therefore a <a title="nurse.state_machine.StateMachine" class="reference external" href="nurse_statemachine.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>,
 the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> has a member <tt class="docutils literal"><span class="pre">states</span></tt> which is a list of
-<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt> (<tt class="xref docutils literal"><span class="pre">nurse.state_machine.State</span></tt>).
+<a title="nurse.game.dialog.DialogState" class="reference internal" href="#nurse.game.dialog.DialogState"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt></a> (<a title="nurse.state_machine.State" class="reference external" href="nurse_statemachine.html#nurse.state_machine.State"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.State</span></tt></a>).
 The <a title="nurse.sprite.Dialog.update" class="reference external" href="index.html#nurse.sprite.Dialog.update"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog.update()</span></tt></a> function actually just calls the
-<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState.update()</span></tt> function of the <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt>
+<a title="nurse.game.dialog.DialogState.update" class="reference internal" href="#nurse.game.dialog.DialogState.update"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState.update()</span></tt></a> function of the <a title="nurse.game.dialog.DialogState" class="reference internal" href="#nurse.game.dialog.DialogState"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt></a>
 defined by the member <tt class="docutils literal"><span class="pre">_current_state</span></tt> of the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>.</p>
 <p>For each <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and in particular for the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>,
-the method <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt> is called, which initializes
+the method <a title="nurse.state_machine.StateMachine.start" class="reference external" href="nurse_statemachine.html#nurse.state_machine.StateMachine.start"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt></a> is called, which initializes
 the member <tt class="docutils literal"><span class="pre">_current_state</span></tt> with <tt class="docutils literal"><span class="pre">_initial_state</span></tt>, should it be previously defined
-by the method <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.set_initial_state()</span></tt> or by a
-default instance created in that same <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt>
+by the method <a title="nurse.state_machine.StateMachine.set_initial_state" class="reference external" href="nurse_statemachine.html#nurse.state_machine.StateMachine.set_initial_state"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.set_initial_state()</span></tt></a> or by a
+default instance created in that same <a title="nurse.state_machine.StateMachine.start" class="reference external" href="nurse_statemachine.html#nurse.state_machine.StateMachine.start"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt></a>
 function. Then the <a title="nurse.context.ContextManager" class="reference external" href="index.html#nurse.context.ContextManager"><tt class="xref docutils literal"><span class="pre">nurse.context.ContextManager</span></tt></a> updates its <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a>,
-or more specifically each <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a> has its <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt>
-updated. With regard to this, the <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt> updates its sprites,
-therefore the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> and its current <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt>.</p>
-<div class="section" id="nurse-game-dialog">
-<h2><tt class="xref docutils literal"><span class="pre">nurse.game.dialog</span></tt><a class="headerlink" href="#nurse-game-dialog" title="Permalink to this headline">¶</a></h2>
+or more specifically each <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a> has its <a title="nurse.state_machine.StateMachine" class="reference external" href="nurse_statemachine.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>
+updated. With regard to this, the <a title="nurse.game.dialog.DialogContext" class="reference internal" href="#nurse.game.dialog.DialogContext"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt></a> updates its sprites,
+therefore the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> and its current <a title="nurse.game.dialog.DialogState" class="reference internal" href="#nurse.game.dialog.DialogState"><tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt></a>.</p>
+<div class="section" id="module-nurse.game.dialog">
+<h2><tt class="xref docutils literal"><span class="pre">nurse.game.dialog</span></tt><a class="headerlink" href="#module-nurse.game.dialog" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="nurse.game.dialog.DialogContext">
+<em class="property">class </em><tt class="descclassname">nurse.game.dialog.</tt><tt class="descname">DialogContext</tt><big>(</big><em>name</em>, <em>msg</em>, <em>is_visible=True</em>, <em>is_active=True</em>, <em>_is_receiving_events=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_fsm">
+<tt class="descname">add_fsm</tt><big>(</big><em>fsm</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_fsm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_screen">
+<tt class="descname">add_screen</tt><big>(</big><em>screen</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_screen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.add_visible_data">
+<tt class="descname">add_visible_data</tt><big>(</big><em>data</em>, <em>layer=0</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.add_visible_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimics Qt signal/slot connection.</p>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>signal <span class="classifier-delimiter">:</span> <span class="classifier">any pickable object        </span></dt>
+<dd>If signal is equal to &#8216;__all__&#8217; the slot function will be called for 
+any signal.</dd>
+<dt>receiver <span class="classifier-delimiter">:</span> <span class="classifier">Object </span></dt>
+<dd>Destination object.</dd>
+<dt>slot <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Name of the function to call on the receiver.</dd>
+<dt>asynchronous <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True if the the slot is queued in the eventloop.
+False if the slot is called directly during the emit call.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.delegate">
+<tt class="descname">delegate</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.delegate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the object from the given signal/receiver/slot binding.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+receiver : Object
+slot : str
+asynchronous : bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.display">
+<tt class="descname">display</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emits a signal and associated signal data if provided. For instance, 
+signal data can help identifying between which states of a context a 
+transition is happening.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+signal_data : any pickable object</p>
+<p>See Also:</p>
+<p><tt class="xref docutils literal"><span class="pre">nurse.state_machine.change_state()</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.get_visible_data">
+<tt class="descname">get_visible_data</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.get_visible_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.set_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns an attribute to the object.</p>
+<p>Parameters:</p>
+<p>name : str
+value : dtype</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogContext.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogContext.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.game.dialog.DialogListener">
+<em class="property">class </em><tt class="descclassname">nurse.game.dialog.</tt><tt class="descname">DialogListener</tt><a class="headerlink" href="#nurse.game.dialog.DialogListener" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.game.dialog.DialogListener.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimics Qt signal/slot connection.</p>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>signal <span class="classifier-delimiter">:</span> <span class="classifier">any pickable object        </span></dt>
+<dd>If signal is equal to &#8216;__all__&#8217; the slot function will be called for 
+any signal.</dd>
+<dt>receiver <span class="classifier-delimiter">:</span> <span class="classifier">Object </span></dt>
+<dd>Destination object.</dd>
+<dt>slot <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Name of the function to call on the receiver.</dd>
+<dt>asynchronous <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True if the the slot is queued in the eventloop.
+False if the slot is called directly during the emit call.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the object from the given signal/receiver/slot binding.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+receiver : Object
+slot : str
+asynchronous : bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emits a signal and associated signal data if provided. For instance, 
+signal data can help identifying between which states of a context a 
+transition is happening.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+signal_data : any pickable object</p>
+<p>See Also:</p>
+<p><tt class="xref docutils literal"><span class="pre">nurse.state_machine.change_state()</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>For now, returns True.</p>
+<p>Returns:</p>
+<p>True</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.on_dialog_finish">
+<tt class="descname">on_dialog_finish</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.on_dialog_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.on_dialog_start">
+<tt class="descname">on_dialog_start</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.on_dialog_start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.on_fast_forward">
+<tt class="descname">on_fast_forward</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.on_fast_forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogListener.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogListener.set_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns an attribute to the object.</p>
+<p>Parameters:</p>
+<p>name : str
+value : dtype</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.game.dialog.DialogState">
+<em class="property">class </em><tt class="descclassname">nurse.game.dialog.</tt><tt class="descname">DialogState</tt><big>(</big><em>name='text'</em>, <em>text='...'</em>, <em>font='Times New Roman'</em>, <em>font_size=20</em>, <em>text_area=None</em>, <em>perso=None</em>, <em>char_per_sec=5.0</em>, <em>typing_machine_mode=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.game.dialog.DialogState.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimics Qt signal/slot connection.</p>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>signal <span class="classifier-delimiter">:</span> <span class="classifier">any pickable object        </span></dt>
+<dd>If signal is equal to &#8216;__all__&#8217; the slot function will be called for 
+any signal.</dd>
+<dt>receiver <span class="classifier-delimiter">:</span> <span class="classifier">Object </span></dt>
+<dd>Destination object.</dd>
+<dt>slot <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Name of the function to call on the receiver.</dd>
+<dt>asynchronous <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True if the the slot is queued in the eventloop.
+False if the slot is called directly during the emit call.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the object from the given signal/receiver/slot binding.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+receiver : Object
+slot : str
+asynchronous : bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emits a signal and associated signal data if provided. For instance, 
+signal data can help identifying between which states of a context a 
+transition is happening.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+signal_data : any pickable object</p>
+<p>See Also:</p>
+<p><tt class="xref docutils literal"><span class="pre">nurse.state_machine.change_state()</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.set_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns an attribute to the object.</p>
+<p>Parameters:</p>
+<p>name : str
+value : dtype</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.game.dialog.DialogState.update">
+<tt class="descname">update</tt><big>(</big><em>dt</em><big>)</big><a class="headerlink" href="#nurse.game.dialog.DialogState.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -90,7 +394,7 @@ therefore the <a title="nurse.sprite.Dialog" class="reference external" href="in
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="">Dialogs in The Nurse Project</a><ul>
-<li><a class="reference external" href="#nurse-game-dialog"><tt class="docutils literal"><span class="pre">nurse.game.dialog</span></tt></a></li>
+<li><a class="reference external" href="#module-nurse.game.dialog"><tt class="docutils literal"><span class="pre">nurse.game.dialog</span></tt></a></li>
 </ul>
 </li>
 </ul>

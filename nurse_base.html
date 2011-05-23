@@ -53,22 +53,22 @@
 <h1><a class="reference external" href="index.html"><em>The Nurse Project</em></a> base module<a class="headerlink" href="#the-nurse-project-base-module" title="Permalink to this headline">¶</a></h1>
 <p>The module <tt class="xref docutils literal"><span class="pre">nurse.base</span></tt> contains the main class <a title="nurse.base.Object" class="reference internal" href="#nurse.base.Object"><tt class="xref docutils literal"><span class="pre">nurse.base.Object</span></tt></a>
 from which any other class from the project derives.
-Also the global variable <tt class="docutils literal"><span class="pre">universe</span></tt> (<a title="nurse.base.Object" class="reference internal" href="#nurse.base.Object"><tt class="xref docutils literal"><span class="pre">nurse.base.Object</span></tt></a>) is defined in this module.</p>
+Also the global variable <tt class="xref docutils literal"><span class="pre">universe</span></tt> (<a title="nurse.base.Object" class="reference internal" href="#nurse.base.Object"><tt class="xref docutils literal"><span class="pre">nurse.base.Object</span></tt></a>) is defined in this module.</p>
 <p>This parenthood provides objects with features for &#8216;low-level&#8217; signal transmission.</p>
 <p>The following example binds two objects via a signal/slot connection.</p>
-<p>..doctest:</p>
-<div class="highlight-python"><pre>from nurse.base import *
-&lt;BLANKLINE&gt;
-class SignalListener(Object):
-        def __init__(self, name):
-                Object.__init__(self, name)
-        def on_signal(self):
-                print 'signal received'
-&lt;BLANKLINE&gt;
-listener = SignalListener('listener')
-emitter = Object('emitter')
-emitter.connect('secret_signal', listener, 'on_signal')
-emitter.emit('secret_signal')</pre>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">nurse.base</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">SignalListener</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+                <span class="n">Object</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">on_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">print</span> <span class="s">&#39;signal received&#39;</span>
+
+<span class="n">listener</span> <span class="o">=</span> <span class="n">SignalListener</span><span class="p">(</span><span class="s">&#39;listener&#39;</span><span class="p">)</span>
+<span class="n">emitter</span> <span class="o">=</span> <span class="n">Object</span><span class="p">(</span><span class="s">&#39;emitter&#39;</span><span class="p">)</span>
+<span class="n">emitter</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;secret_signal&#39;</span><span class="p">,</span> <span class="n">listener</span><span class="p">,</span> <span class="s">&#39;on_signal&#39;</span><span class="p">)</span>
+<span class="n">emitter</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="s">&#39;secret_signal&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 <div class="section" id="module-nurse.base">
 <h2><tt class="xref docutils literal"><span class="pre">nurse.base</span></tt><a class="headerlink" href="#module-nurse.base" title="Permalink to this headline">¶</a></h2>

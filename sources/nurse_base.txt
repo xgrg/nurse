@@ -1,0 +1,37 @@
+
+:doc:`The Nurse Project <index>` base module
+***************************************************
+
+The module :mod:`nurse.base` contains the main class :class:`nurse.base.Object`
+from which any other class from the project derives.
+Also the global variable :data:`universe` (:class:`nurse.base.Object`) is defined in this module.
+
+This parenthood provides objects with features for 'low-level' signal transmission.
+
+The following example binds two objects via a signal/slot connection.
+
+.. doctest::
+
+        from nurse.base import *
+        <BLANKLINE>
+        class SignalListener(Object):
+                def __init__(self, name):
+                        Object.__init__(self, name)
+                def on_signal(self):
+                        print 'signal received'
+        <BLANKLINE>
+        listener = SignalListener('listener')
+        emitter = Object('emitter')
+        emitter.connect('secret_signal', listener, 'on_signal')
+        emitter.emit('secret_signal')
+
+
+:mod:`nurse.base`
+==========================
+
+.. automodule:: nurse.base
+    :members:
+    :undoc-members:
+    :inherited-members:
+
+
