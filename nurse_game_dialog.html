@@ -21,8 +21,8 @@
     <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="shortcut icon" href="static/favicon.ico"/>
     <link rel="top" title="The Nurse Project v0.1 documentation" href="index.html" />
-    <link rel="next" title="A Minimal Example" href="minimal_example.html" />
-    <link rel="prev" title="Generating documentation using Sphinx on GitHub" href="generating_documentation_using_sphinx_on_github.html" /> 
+    <link rel="next" title="State Machines in The Nurse Project" href="nurse_statemachine.html" />
+    <link rel="prev" title="The Nurse Project base module" href="nurse_base.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,10 +35,10 @@
           <a href="modindex.html" title="Global Module Index"
              accesskey="M">modules</a> |</li>
         <li class="right" >
-          <a href="minimal_example.html" title="A Minimal Example"
+          <a href="nurse_statemachine.html" title="State Machines in The Nurse Project"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="generating_documentation_using_sphinx_on_github.html" title="Generating documentation using Sphinx on GitHub"
+          <a href="nurse_base.html" title="The Nurse Project base module"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
       </ul>
@@ -59,23 +59,26 @@
 which is added to a list of contexts managed by the <a title="nurse.context.ContextManager" class="reference external" href="index.html#nurse.context.ContextManager"><tt class="xref docutils literal"><span class="pre">nurse.context.ContextManager</span></tt></a>.
 The <tt class="xref docutils literal"><span class="pre">nurse.game.DialogContext</span></tt> <tt class="docutils literal"><span class="pre">__init__()</span></tt> function instanciates various
 sprites (such as <a title="nurse.sprite.UniformLayer" class="reference external" href="index.html#nurse.sprite.UniformLayer"><tt class="xref docutils literal"><span class="pre">nurse.sprite.UniformLayer</span></tt></a>), a <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>
-(<a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> (<a title="nurse.state_machine.StateMachine" class="reference external" href="index.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>) ) and a
+(<a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> (<tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt>) ) and a
 <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogListener</span></tt>.</p>
-<p>As a <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and therefore a <a title="nurse.state_machine.StateMachine" class="reference external" href="index.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>,
+<p>As a <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and therefore a <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt>,
 the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> has a member <tt class="docutils literal"><span class="pre">states</span></tt> which is a list of
-<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt> (<a title="nurse.state_machine.State" class="reference external" href="index.html#nurse.state_machine.State"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.State</span></tt></a>).
+<tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt> (<tt class="xref docutils literal"><span class="pre">nurse.state_machine.State</span></tt>).
 The <a title="nurse.sprite.Dialog.update" class="reference external" href="index.html#nurse.sprite.Dialog.update"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog.update()</span></tt></a> function actually just calls the
 <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState.update()</span></tt> function of the <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt>
 defined by the member <tt class="docutils literal"><span class="pre">_current_state</span></tt> of the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>.</p>
 <p>For each <a title="nurse.sprite.Sprite" class="reference external" href="index.html#nurse.sprite.Sprite"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Sprite</span></tt></a> and in particular for the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a>,
-the method <a title="nurse.state_machine.StateMachine.start" class="reference external" href="index.html#nurse.state_machine.StateMachine.start"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt></a> is called, which initializes
+the method <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt> is called, which initializes
 the member <tt class="docutils literal"><span class="pre">_current_state</span></tt> with <tt class="docutils literal"><span class="pre">_initial_state</span></tt>, should it be previously defined
-by the method <a title="nurse.state_machine.StateMachine.set_initial_state" class="reference external" href="index.html#nurse.state_machine.StateMachine.set_initial_state"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.set_initial_state()</span></tt></a> or by a
-default instance created in that same <a title="nurse.state_machine.StateMachine.start" class="reference external" href="index.html#nurse.state_machine.StateMachine.start"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt></a>
+by the method <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.set_initial_state()</span></tt> or by a
+default instance created in that same <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine.start()</span></tt>
 function. Then the <a title="nurse.context.ContextManager" class="reference external" href="index.html#nurse.context.ContextManager"><tt class="xref docutils literal"><span class="pre">nurse.context.ContextManager</span></tt></a> updates its <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a>,
-or more specifically each <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a> has its <a title="nurse.state_machine.StateMachine" class="reference external" href="index.html#nurse.state_machine.StateMachine"><tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt></a>
+or more specifically each <a title="nurse.context.Context" class="reference external" href="index.html#nurse.context.Context"><tt class="xref docutils literal"><span class="pre">nurse.context.Context</span></tt></a> has its <tt class="xref docutils literal"><span class="pre">nurse.state_machine.StateMachine</span></tt>
 updated. With regard to this, the <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogContext</span></tt> updates its sprites,
 therefore the <a title="nurse.sprite.Dialog" class="reference external" href="index.html#nurse.sprite.Dialog"><tt class="xref docutils literal"><span class="pre">nurse.sprite.Dialog</span></tt></a> and its current <tt class="xref docutils literal"><span class="pre">nurse.game.dialog.DialogState</span></tt>.</p>
+<div class="section" id="nurse-game-dialog">
+<h2><tt class="xref docutils literal"><span class="pre">nurse.game.dialog</span></tt><a class="headerlink" href="#nurse-game-dialog" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -84,12 +87,20 @@ therefore the <a title="nurse.sprite.Dialog" class="reference external" href="in
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Dialogs in The Nurse Project</a><ul>
+<li><a class="reference external" href="#nurse-game-dialog"><tt class="docutils literal"><span class="pre">nurse.game.dialog</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
             <h4>Previous topic</h4>
-            <p class="topless"><a href="generating_documentation_using_sphinx_on_github.html"
-                                  title="previous chapter">Generating documentation using Sphinx on GitHub</a></p>
+            <p class="topless"><a href="nurse_base.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal"><span class="pre">The</span> <span class="pre">Nurse</span> <span class="pre">Project</span></tt> base module</a></p>
             <h4>Next topic</h4>
-            <p class="topless"><a href="minimal_example.html"
-                                  title="next chapter">A Minimal Example</a></p>
+            <p class="topless"><a href="nurse_statemachine.html"
+                                  title="next chapter">State Machines in <tt class="docutils literal docutils literal"><span class="pre">The</span> <span class="pre">Nurse</span> <span class="pre">Project</span></tt></a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="sources/nurse_game_dialog.txt"
@@ -122,10 +133,10 @@ therefore the <a title="nurse.sprite.Dialog" class="reference external" href="in
           <a href="modindex.html" title="Global Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="minimal_example.html" title="A Minimal Example"
+          <a href="nurse_statemachine.html" title="State Machines in The Nurse Project"
              >next</a> |</li>
         <li class="right" >
-          <a href="generating_documentation_using_sphinx_on_github.html" title="Generating documentation using Sphinx on GitHub"
+          <a href="nurse_base.html" title="The Nurse Project base module"
              >previous</a> |</li>
         <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
       </ul>

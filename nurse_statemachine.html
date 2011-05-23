@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>State Machines in The Nurse Project &mdash; The Nurse Project v0.1 documentation</title>
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <link rel="shortcut icon" href="static/favicon.ico"/>
+    <link rel="top" title="The Nurse Project v0.1 documentation" href="index.html" />
+    <link rel="next" title="A Minimal Example" href="minimal_example.html" />
+    <link rel="prev" title="Dialogs in The Nurse Project" href="nurse_game_dialog.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
+          <a href="minimal_example.html" title="A Minimal Example"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nurse_game_dialog.html" title="Dialogs in The Nurse Project"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="state-machines-in-the-nurse-project">
+<h1>State Machines in <a class="reference external" href="index.html"><em>The Nurse Project</em></a><a class="headerlink" href="#state-machines-in-the-nurse-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-nurse.state_machine">
+<h2><tt class="xref docutils literal"><span class="pre">nurse.state_machine</span></tt><a class="headerlink" href="#module-nurse.state_machine" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<dl class="last docutils">
+<dt>Don&#8217;t forget that a Context inheritates from State, a ContextManager inheritates</dt>
+<dd>from StateMachine and StateMachine inheritates from State.</dd>
+</dl>
+</div>
+<dl class="class">
+<dt id="nurse.state_machine.State">
+<em class="property">class </em><tt class="descclassname">nurse.state_machine.</tt><tt class="descname">State</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.state_machine.State.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimics Qt signal/slot connection.</p>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>signal <span class="classifier-delimiter">:</span> <span class="classifier">any pickable object        </span></dt>
+<dd>If signal is equal to &#8216;__all__&#8217; the slot function will be called for 
+any signal.</dd>
+<dt>receiver <span class="classifier-delimiter">:</span> <span class="classifier">Object </span></dt>
+<dd>Destination object.</dd>
+<dt>slot <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Name of the function to call on the receiver.</dd>
+<dt>asynchronous <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True if the the slot is queued in the eventloop.
+False if the slot is called directly during the emit call.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the object from the given signal/receiver/slot binding.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+receiver : Object
+slot : str
+asynchronous : bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emits a signal and associated signal data if provided. For instance, 
+signal data can help identifying between which states of a context a 
+transition is happening.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+signal_data : any pickable object</p>
+<p>See Also:</p>
+<p><tt class="xref docutils literal"><span class="pre">nurse.state_machine.change_state()</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.State.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.State.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.State.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.State.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.State.set_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns an attribute to the object.</p>
+<p>Parameters:</p>
+<p>name : str
+value : dtype</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nurse.state_machine.StateMachine">
+<em class="property">class </em><tt class="descclassname">nurse.state_machine.</tt><tt class="descname">StateMachine</tt><big>(</big><em>name='state machine'</em>, <em>context=None</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="nurse.state_machine.StateMachine.add_state">
+<tt class="descname">add_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.add_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.add_transition">
+<tt class="descname">add_transition</tt><big>(</big><em>sender</em>, <em>signal</em>, <em>state</em>, <em>src_prop={}</em>, <em>dst_prop={}</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.assign_property">
+<tt class="descname">assign_property</tt><big>(</big><em>obj</em>, <em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.assign_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.change_state">
+<tt class="descname">change_state</tt><big>(</big><em>src</em>, <em>dst</em>, <em>src_prop={}</em>, <em>dst_prop={}</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.change_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.connect">
+<tt class="descname">connect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mimics Qt signal/slot connection.</p>
+<p>Parameters:</p>
+<dl class="docutils">
+<dt>signal <span class="classifier-delimiter">:</span> <span class="classifier">any pickable object        </span></dt>
+<dd>If signal is equal to &#8216;__all__&#8217; the slot function will be called for 
+any signal.</dd>
+<dt>receiver <span class="classifier-delimiter">:</span> <span class="classifier">Object </span></dt>
+<dd>Destination object.</dd>
+<dt>slot <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Name of the function to call on the receiver.</dd>
+<dt>asynchronous <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd>True if the the slot is queued in the eventloop.
+False if the slot is called directly during the emit call.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.disconnect">
+<tt class="descname">disconnect</tt><big>(</big><em>signal</em>, <em>receiver</em>, <em>slot='receive_events'</em>, <em>asynchronous=True</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the object from the given signal/receiver/slot binding.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+receiver : Object
+slot : str
+asynchronous : bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.emit">
+<tt class="descname">emit</tt><big>(</big><em>signal</em>, <em>signal_data=None</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Emits a signal and associated signal data if provided. For instance, 
+signal data can help identifying between which states of a context a 
+transition is happening.</p>
+<p>Parameters:</p>
+<p>signal : any pickable object
+signal_data : any pickable object</p>
+<p>See Also:</p>
+<p><tt class="xref docutils literal"><span class="pre">nurse.state_machine.change_state()</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.is_receiving_events">
+<tt class="descname">is_receiving_events</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.is_receiving_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_entered">
+<tt class="descname">on_entered</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_entered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_entry">
+<tt class="descname">on_entry</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_exit">
+<tt class="descname">on_exit</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_exited">
+<tt class="descname">on_exited</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_exited" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.on_transition">
+<tt class="descname">on_transition</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.on_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.remove_transition">
+<tt class="descname">remove_transition</tt><big>(</big><em>transition</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.set_initial_state">
+<tt class="descname">set_initial_state</tt><big>(</big><em>state</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.set_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.set_property">
+<tt class="descname">set_property</tt><big>(</big><em>name</em>, <em>value</em><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.set_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assigns an attribute to the object.</p>
+<p>Parameters:</p>
+<p>name : str
+value : dtype</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.start">
+<tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nurse.state_machine.StateMachine.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#nurse.state_machine.StateMachine.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">State Machines in <tt class="docutils literal"><span class="pre">The</span> <span class="pre">Nurse</span> <span class="pre">Project</span></tt></a><ul>
+<li><a class="reference external" href="#module-nurse.state_machine"><tt class="docutils literal"><span class="pre">nurse.state_machine</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="nurse_game_dialog.html"
+                                  title="previous chapter">Dialogs in The Nurse Project</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="minimal_example.html"
+                                  title="next chapter">A Minimal Example</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="sources/nurse_statemachine.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="minimal_example.html" title="A Minimal Example"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nurse_game_dialog.html" title="Dialogs in The Nurse Project"
+             >previous</a> |</li>
+        <li><a href="index.html">The Nurse Project v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, Grégory Operto, Matthieu Perrot, Thomas Vincent.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
